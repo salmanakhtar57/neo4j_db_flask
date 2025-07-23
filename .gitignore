@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+*.sqlite3
+
+# Virtualenv
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+
+# Mac/Unix
+.DS_Store
+*.log
+
+# OS-specific
+Thumbs.db
+
+# Neo4j
+import/
+*.dump
+
+# Docker volumes and temp files
+*.pid
+*.sock
+data/
+logs/
+
+# Flask
+instance/

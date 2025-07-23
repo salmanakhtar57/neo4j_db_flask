@@ -1,0 +1,34 @@
+services:
+  neo4j:
+    image: neo4j:5.14-enterprise
+    container_name: neo4j-graph-db
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/pythondev
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+    volumes:
+      - neo4j_data:/data
+      - ./import:/var/lib/neo4j/import
+    command: >
+      bash -c "
+        neo4j-admin dbms set-initial-password pythondev &&
+        neo4j-admin database load neo4j --from-path=/var/lib/neo4j/import --overwrite-destination=true &&
+        neo4j console
+      "
+
+  flask:
+    build: .
+    container_name: neo-dashboard-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - neo4j
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+
+volumes:
+  neo4j_data:
