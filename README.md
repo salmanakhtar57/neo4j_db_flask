@@ -31,7 +31,6 @@ A robust Flask-based web dashboard that integrates with a Neo4j graph database u
 ### 1. Clone the Repository
 
 - git clone https://github.com/your-username/flask-neo4j-dashboard.git
-- cd flask-neo4j-dashboard
 
 ### 3. Run Locally
 
